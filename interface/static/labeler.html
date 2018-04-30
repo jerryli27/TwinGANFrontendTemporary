@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+  
+  <title>animator</title>
+
+  <!-- filestart -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+  <script src="jquery.min.js"></script>
+  
+  <!-- jQuery UI -->
+      <!--https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css-->
+      <!--      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
+      <link rel="stylesheet" href="jquery-ui.css">
+      <script src="jquery-ui.min.js"></script>
+
+      <!-- bootstrap -->
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <script src="bootstrap/js/bootstrap.min.js"></script>
+
+      <!-- main -->
+      <script type="text/javascript" src="magic-wand-min.js"></script>
+      <script type="text/javascript" src="simplify.js"></script>
+      <script type="text/javascript" src="labeler.js"></script>
+
+      <link rel="stylesheet" href="labeler.css">
+  <!-- fileend -->
+</head>
+<body>
+
+  <div id="content">
+
+    <div class="content-box">
+ 
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <a class="brand" href="#">Animator</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="http://github.com/">github(todo)</a></li>
+            <li><a href="http://github.com/">blog(todo)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="overflow: auto">
+        <div style="float: left; margin-right: 10px;">Blur radius: </div>
+        <input id="blurRadius" type="text" onchange="onRadiusChange.apply(this, arguments)" style="float: left; width: 20px; margin-right: 10px;"/>
+        <div id="threshold"></div>
+      </div>
+      <div>(hold left mouse button and move to change the color threshold)</div>
+
+      <div>
+          <center id="img_pane" style="width:1250px; margin-left:auto; margin-right:auto; display:block" >
+            <div>
+              <button id="clear" class="btn btn-large btn-primary" onclick="clear_canvas()"><i class="icon-edit icon-white"></i>Clear</button>
+              <button id="undo" class="btn btn-large btn-primary" onclick="undo()"><i class="icon-edit icon-white"></i>Undo</button>
+              <button id="to_magic_wand" class="btn btn-large btn-primary" onclick="change_mode(0)"><i class="icon-edit icon-white"></i>Magic Wand Mode</button>
+              <button id="to_crop_mode" class="btn btn-large btn-primary" onclick="change_mode(1)"><i class="icon-edit icon-white"></i>Crop Mode</button>
+              <button id="to_sketch_refinement" class="btn btn-large btn-primary" onclick="change_mode(2)"><i class="icon-edit icon-white"></i>Sketch Refine Mode</button>
+              <button id="submit" class="btn btn-large btn-primary" onclick="save_annotation()"><i class="icon-edit icon-white"></i>Submit</button>
+              <button id="skip" class="btn btn-large btn-primary" onclick="save_annotation(true)"><i class="icon-edit icon-white"></i>Skip</button>
+            </div>
+              <div class="insideWrapper">
+                  <img id="background_sketch" class="coveredSketch"/>
+                  <img id="background" class="coveredImage"/>
+                  <canvas id="background_canvas" class="coveringCanvas" onmouseup="onMouseUp.apply(this, arguments)" onmousedown="onMouseDown.apply(this, arguments)" onmousemove="onMouseMove.apply(this, arguments)"></canvas>
+                  <!-- The mouse events of sketch_refine_canvas will be captured by the same functions above.-->
+                  <!--<canvas id="sketch_refine_canvas" class="coveringCanvas"></canvas>-->
+              </div>
+          </center>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  
+</body>
+</html>

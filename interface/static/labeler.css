@@ -1,0 +1,35 @@
+
+/* For overlaying canvas on image.
+Taken from https://stackoverflow.com/questions/14824747/overlay-html5-canvas-over-image*/
+.insideWrapper {
+  width:100%;
+  height:100%;
+  position:relative;
+}
+.coveredSketch {
+  /*width:100%;*/
+  /*height:100%;*/
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index: -1;
+}
+.coveredImage {
+  /*width:100%;*/
+  /*height:100%;*/
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index: 0;
+}
+.coveringCanvas {
+  /*width:100%;*/
+  /*height:100%;*/
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index: 1;
+}
+.coveringCanvas:hover {
+    cursor: default;
+}
